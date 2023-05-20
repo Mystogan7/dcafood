@@ -16,7 +16,7 @@ class GameListViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Games"
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 34)
+        label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -56,8 +56,8 @@ class GameListViewController: UIViewController {
         
         // Setup constraints for searchBar
         NSLayoutConstraint.activate([
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             searchBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             searchBar.heightAnchor.constraint(equalToConstant: 56)
         ])
@@ -102,9 +102,11 @@ extension GameListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.currentPage += 1
-        debounce(0.5) { [weak self] in
-            self?.viewModel.fetchGames(query: self?.viewModel.currentQuery ?? "", page: self?.viewModel.currentPage ?? 0)
+        if indexPath.row == viewModel.filteredGames.value.count - 1 {
+            viewModel.currentPage += 1
+            debounce(0.5) { [weak self] in
+                self?.viewModel.fetchGames(query: self?.viewModel.currentQuery ?? "", page: self?.viewModel.currentPage ?? 1)
+            }
         }
     }
 }
@@ -127,11 +129,8 @@ extension GameListViewController: UITableViewDataSource {
 
 extension GameListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.currentQuery = searchText
-        viewModel.currentPage = 1
         debounce(0.5) { [weak self] in
             self?.viewModel.searchGames(query: searchText)
         }
     }
 }
-

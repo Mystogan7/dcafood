@@ -7,47 +7,70 @@
 
 import UIKit
 
-import UIKit
-
 class GameTableViewCell: UITableViewCell {
-    static let imageCache = NSCache<NSURL, UIImage>()
+    static let imageCache = ImageCache()
     private var currentImageLoadingTask: URLSessionDataTask?
-    private let imageObservable = Observable<UIImage?>(nil)
-    private var imageObserver: ClosureObserver<UIImage?>?
+    
     let gameImageView = UIImageView.createImageView()
-    let titleLabel = UILabel.createLabel(fontName: "SFProDisplay-Bold", fontSize: 20)
+    let titleLabel = UILabel.createLabel()
     let metacriticLabel = UILabel.createLabel()
-    let genresLabel = UILabel.createLabel()
-
+    let genresLabel = UILabel.createLabel(color: UIColor(red: 0x8A / 255.0, green: 0x8A / 255.0, blue: 0x8F / 255.0, alpha: 1.0))
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         setupSubviews()
         setupConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         resetCell()
     }
-
+    
     func configure(with game: Game) {
-        titleLabel.text = game.name
-        metacriticLabel.text = "Metacritic: \(String(describing: game.metacritic))"
+        titleLabel.text = game.name ?? ""
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        
+        let metacriticText = "metacritic: "
+        let metacriticScore = String(describing: game.metacritic ?? 0)
+
+        let metacriticTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 14, weight: .medium),
+            .foregroundColor: UIColor.black
+        ]
+        let metacriticScoreAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 18, weight: .bold),
+            .foregroundColor: UIColor.red
+        ]
+
+        let metacriticAttributedString = NSMutableAttributedString(string: metacriticText, attributes: metacriticTextAttributes)
+        let metacriticScoreAttributedString = NSAttributedString(string: metacriticScore, attributes: metacriticScoreAttributes)
+        metacriticAttributedString.append(metacriticScoreAttributedString)
+
+        metacriticLabel.attributedText = metacriticAttributedString
+        
+        if let genres = game.genres {
+            let arr: [String] = genres.map({
+                $0.name ?? ""
+            })
+            genresLabel.text = arr.joined(separator: ", ")
+            genresLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        }
         
         if let imageUrl = URL(string: game.backgroundImage ?? "") {
             loadImage(for: imageUrl, into: gameImageView)
         }
     }
-
+    
     private func setupSubviews() {
         contentView.addSubviews(gameImageView, titleLabel, metacriticLabel, genresLabel)
     }
-
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             gameImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -56,86 +79,50 @@ class GameTableViewCell: UITableViewCell {
             gameImageView.heightAnchor.constraint(equalToConstant: 104),
 
             titleLabel.leadingAnchor.constraint(equalTo: gameImageView.trailingAnchor, constant: 8),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
 
             metacriticLabel.leadingAnchor.constraint(equalTo: gameImageView.trailingAnchor, constant: 8),
-            metacriticLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            metacriticLabel.bottomAnchor.constraint(equalTo: genresLabel.topAnchor, constant: -8),
 
-            genresLabel.leadingAnchor.constraint(equalTo: metacriticLabel.trailingAnchor, constant: 8),
-            genresLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            genresLabel.leadingAnchor.constraint(equalTo: gameImageView.trailingAnchor, constant: 8),
+            genresLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
         ])
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        bindImageView()
     }
     
     private func resetCell() {
         currentImageLoadingTask?.cancel()
         currentImageLoadingTask = nil
-
+        
         gameImageView.image = nil
         titleLabel.text = nil
         metacriticLabel.text = nil
         genresLabel.text = nil
     }
     
-    private func bindImageView() {
-        imageObserver = ClosureObserver { [weak self] image in
-            DispatchQueue.main.async {
-                self?.gameImageView.image = image ?? UIImage(named: "placeholderImage")
-            }
-        }
-        imageObservable.addObserver(imageObserver!)
-    }
-
     private func loadImage(for url: URL, into imageView: UIImageView) {
-        currentImageLoadingTask?.cancel()
-
-        if let cachedImage = GameTableViewCell.imageCache.object(forKey: url as NSURL) {
+        imageView.image = nil
+        imageView.imageURL = url
+        
+        if let cachedImage = GameTableViewCell.imageCache.getImage(for: url) {
             imageView.image = cachedImage
             return
         }
-
-        currentImageLoadingTask = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        
+        currentImageLoadingTask?.cancel()
+        let task = URLSession.shared.dataTask(with: url) { [weak imageView] data, response, error in
             guard let data = data, error == nil, let image = UIImage(data: data) else {
                 print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
-                self?.imageObservable.value = nil
                 return
             }
-
-            GameTableViewCell.imageCache.setObject(image, forKey: url as NSURL)
-            self?.imageObservable.value = image
-            self?.currentImageLoadingTask = nil
+            
+            DispatchQueue.main.async {
+                if let currentURL = imageView?.imageURL, currentURL == url {
+                    imageView?.image = image
+                    GameTableViewCell.imageCache.cacheImage(image, for: url)
+                }
+            }
         }
-        currentImageLoadingTask?.resume()
-    }
-}
-
-extension UIImageView {
-    static func createImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }
-}
-
-extension UILabel {
-    static func createLabel(fontName: String = "SFProDisplay-Regular", fontSize: CGFloat = 17) -> UILabel {
-        let label = UILabel()
-        label.font = UIFont(name: fontName, size: fontSize)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }
-}
-
-extension UIView {
-    func addSubviews(_ subviews: UIView...) {
-        for subview in subviews {
-            addSubview(subview)
-        }
+        currentImageLoadingTask = task
+        task.resume()
     }
 }

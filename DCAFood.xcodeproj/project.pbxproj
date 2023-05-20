@@ -33,6 +33,8 @@
 		87EEDCB82A18E41900BD3F8F /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDCB72A18E41900BD3F8F /* GameListViewModel.swift */; };
 		87EEDCBA2A18E43300BD3F8F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDCB92A18E43300BD3F8F /* FavoritesViewModel.swift */; };
 		87EEDCBD2A18E77100BD3F8F /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDCBC2A18E77100BD3F8F /* GameCell.swift */; };
+		87EEDCC42A19251700BD3F8F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDCC32A19251700BD3F8F /* Extensions.swift */; };
+		87EEDCC62A19254400BD3F8F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDCC52A19254400BD3F8F /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		87EEDCB72A18E41900BD3F8F /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		87EEDCB92A18E43300BD3F8F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		87EEDCBC2A18E77100BD3F8F /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		87EEDCC32A19251700BD3F8F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		87EEDCC52A19254400BD3F8F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			children = (
 				87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */,
 				87EEDC582A18B1D400BD3F8F /* MainTabBarViewController.swift */,
+				87EEDCC72A19256C00BD3F8F /* Utilities */,
 				87EEDCC22A18E81600BD3F8F /* Favorites */,
 				87EEDCC02A18E7DD00BD3F8F /* GameList */,
 				87EEDCBB2A18E74400BD3F8F /* ViewModel */,
@@ -256,6 +261,15 @@
 				87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		87EEDCC72A19256C00BD3F8F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDCC32A19251700BD3F8F /* Extensions.swift */,
+				87EEDCC52A19254400BD3F8F /* ImageCache.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,8 +412,10 @@
 				87EEDCB82A18E41900BD3F8F /* GameListViewModel.swift in Sources */,
 				87EEDC8E2A18C52B00BD3F8F /* Game.swift in Sources */,
 				87EEDCB12A18E00300BD3F8F /* GameDetails.swift in Sources */,
+				87EEDCC42A19251700BD3F8F /* Extensions.swift in Sources */,
 				87EEDCBA2A18E43300BD3F8F /* FavoritesViewModel.swift in Sources */,
 				87EEDC872A18BD8E00BD3F8F /* Configurations.swift in Sources */,
+				87EEDCC62A19254400BD3F8F /* ImageCache.swift in Sources */,
 				87EEDC932A18C7D300BD3F8F /* GameListViewController.swift in Sources */,
 				87EEDC892A18BE0800BD3F8F /* RawgAPI.swift in Sources */,
 				87EEDCBD2A18E77100BD3F8F /* GameCell.swift in Sources */,

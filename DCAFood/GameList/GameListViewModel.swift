@@ -28,21 +28,25 @@ class GameListViewModel: GameListViewModelProtocol {
         self.gameService = gameService
     }
 
-    func fetchGames(query: String, page: Int = 0) {
-        // Set the current query and page
-        currentQuery = query
-
-        gameService.searchGames(query: query, page: page == 0 ? currentPage : page) { [weak self] result in
+    func fetchGames(query: String, page: Int = 1) {
+        if query == currentQuery && page != 1 {
+            currentPage = page
+        } else {
+            currentQuery = query
+            currentPage = 1
+        }
+        
+        gameService.searchGames(query: query, page: page) { [weak self] result in
             switch result {
             case .success(let gameListResponse):
                 // Append new games to the existing game list
                 var currentList = self?.gameList.value ?? []
                 currentList.append(contentsOf: gameListResponse.items ?? [])
                 self?.gameList.value = currentList
-
+                
                 // Filter the games based on the current query
                 self?.searchGames(query: query)
-
+                
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
             }
@@ -50,16 +54,17 @@ class GameListViewModel: GameListViewModelProtocol {
     }
 
     func searchGames(query: String) {
-        if query.isEmpty {
+        if query.isEmpty || query == currentQuery {
             filteredGames.value = gameList.value
         } else {
-            let filtered = gameList.value.filter { $0.name?.lowercased().contains(query.lowercased()) ?? false }
-            if filtered.isEmpty {
-                // Fetch new games from the API if no local results
-                fetchGames(query: query, page: currentPage)
-            } else {
-                filteredGames.value = filtered
-            }
+            currentQuery = query
+            currentPage = 1
+            gameList.value = []
+            fetchGames(query: query, page: 1)
         }
+    }
+
+    private func filteredGameList(query: String) -> [Game] {
+        return gameList.value.filter { $0.name?.lowercased().contains(query.lowercased()) ?? false }
     }
 }

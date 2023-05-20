@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RawgGames: Codable {
+struct GameListResponse: Codable {
     let items: [Game]
 
     enum CodingKeys: String, CodingKey {

@@ -21,9 +21,9 @@ enum Configuration {
 
 extension Configuration {
     private static let config: NSDictionary = {
-        guard let path = Bundle.main.path(forResource: "Configuration", ofType: "plist"),
+        guard let path = Bundle.main.path(forResource: "Configurations", ofType: "plist"),
               let config = NSDictionary(contentsOfFile: path) else {
-            fatalError("Configuration.plist not found")
+            fatalError("Configurations.plist not found")
         }
         return config
     }()

@@ -23,7 +23,7 @@ class MainCoordinator: Coordinator {
     
     // Sets up the tab bar controller and its child view controllers
     func start() {
-        let tabBarController = MainTabBarController()
+        let tabBarController = MainTabBarViewController()
         
         // Set up the game list view controller and its coordinator
         let gameListViewController = GameListViewController()

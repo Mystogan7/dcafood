@@ -5,7 +5,7 @@
 	<key>Development</key>
 	<dict>
 		<key>BaseURL</key>
-		<string>https://api-dev.rawg.io/api</string>
+		<string>https://api.rawg.io/api</string>
 		<key>APIKey</key>
 		<string>3be8af6ebf124ffe81d90f514e59856c</string>
 	</dict>

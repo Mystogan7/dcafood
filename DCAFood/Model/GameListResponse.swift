@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameListResponse: Codable {
-    let items: [Game]
+    let items: [Game]?
 
     enum CodingKeys: String, CodingKey {
         case items = "results"

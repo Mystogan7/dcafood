@@ -8,11 +8,11 @@
 import Foundation
 
 struct GameDetails: Codable {
-    let id: Int
-    let slug, name, nameOriginal, description: String
-    let website: String
-    let redditURL: String
-    let backgroundImage: String
+    let id: Int?
+    let slug, name, nameOriginal, description: String?
+    let website: String?
+    let redditURL: String?
+    let backgroundImage: String?
 
     enum CodingKeys: String, CodingKey {
         case id, slug, name

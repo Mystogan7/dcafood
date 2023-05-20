@@ -48,12 +48,34 @@ class GameListViewController: UIViewController {
                 
         searchBar.delegate = self
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
     }
     
     private func setupTableView() {
-        view.addSubview(titleLabel)
-        view.addSubview(searchBar)
+        let containerView = UIView()
+        containerView.backgroundColor = .white
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+
+        // Add searchBar and titleLabel as subviews of containerView
+        containerView.addSubview(searchBar)
+        containerView.addSubview(titleLabel)
+
+        // Setup constraints for containerView
+        NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 235),
+            searchBar.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            searchBar.heightAnchor.constraint(equalToConstant: 56),
+            titleLabel.bottomAnchor.constraint(equalTo: searchBar.topAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+        ])
+        
         view.addSubview(tableView)
         view.addSubview(searchInfoLabel)
         
@@ -61,23 +83,7 @@ class GameListViewController: UIViewController {
         NSLayoutConstraint.activate([
             searchInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             searchInfoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            searchInfoLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 40),
-        ])
-        
-        // Setup constraints for titleLabel
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 58),
-            titleLabel.widthAnchor.constraint(equalToConstant: 180),
-            titleLabel.heightAnchor.constraint(equalToConstant: 41)
-        ])
-        
-        // Setup constraints for searchBar
-        NSLayoutConstraint.activate([
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            searchBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            searchBar.heightAnchor.constraint(equalToConstant: 56)
+            searchInfoLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 40),
         ])
         
         // Setup constraints for tableView
@@ -85,9 +91,10 @@ class GameListViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: containerView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
         
         tableView.dataSource = self
         tableView.delegate = self

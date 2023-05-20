@@ -28,14 +28,24 @@ class GameListViewController: UIViewController {
         return searchBar
     }()
     
+    private let searchInfoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No game has been searched."
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         
         bindData()
         
-        viewModel.fetchGames(query: "", page: 1)
-        
+        updateSearchInfoLabelVisibility()
+                
         searchBar.delegate = self
         
         self.view.backgroundColor = .white
@@ -45,6 +55,14 @@ class GameListViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(searchBar)
         view.addSubview(tableView)
+        view.addSubview(searchInfoLabel)
+        
+        // Setup constraints for searchInfoLabel
+        NSLayoutConstraint.activate([
+            searchInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            searchInfoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            searchInfoLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 40),
+        ])
         
         // Setup constraints for titleLabel
         NSLayoutConstraint.activate([
@@ -80,6 +98,7 @@ class GameListViewController: UIViewController {
         let reloadDataObserver = ClosureObserver<[Game]> { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.updateSearchInfoLabelVisibility()
             }
         }
         
@@ -87,6 +106,10 @@ class GameListViewController: UIViewController {
         viewModel.filteredGames.addObserver(reloadDataObserver)
     }
     
+    private func updateSearchInfoLabelVisibility() {
+        searchInfoLabel.isHidden = !viewModel.currentQuery.isEmpty
+        tableView.isHidden = !searchInfoLabel.isHidden
+    }
     
     private func debounce(_ interval: TimeInterval, block: @escaping () -> Void) {
         debounceTimer?.invalidate()

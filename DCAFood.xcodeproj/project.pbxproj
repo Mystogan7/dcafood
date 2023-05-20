@@ -135,10 +135,10 @@
 			children = (
 				87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */,
 				87EEDC582A18B1D400BD3F8F /* MainTabBarViewController.swift */,
+				87EEDCC92A1940D900BD3F8F /* CommonView */,
 				87EEDCC72A19256C00BD3F8F /* Utilities */,
 				87EEDCC22A18E81600BD3F8F /* Favorites */,
 				87EEDCC02A18E7DD00BD3F8F /* GameList */,
-				87EEDCBB2A18E74400BD3F8F /* ViewModel */,
 				87EEDCB52A18E3F500BD3F8F /* Observer */,
 				87EEDCAF2A18DDE400BD3F8F /* Service */,
 				87EEDC982A18CCB100BD3F8F /* Coordinator */,
@@ -200,19 +200,9 @@
 		87EEDCAF2A18DDE400BD3F8F /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				87EEDCB22A18E18000BD3F8F /* Main */,
-				87EEDCA92A18D91B00BD3F8F /* GameService.swift */,
-				87EEDCAB2A18D97900BD3F8F /* FavoritesService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		87EEDCB22A18E18000BD3F8F /* Main */ = {
-			isa = PBXGroup;
-			children = (
 				87EEDCAD2A18DD6000BD3F8F /* NetworkService.swift */,
 			);
-			path = Main;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		87EEDCB52A18E3F500BD3F8F /* Observer */ = {
@@ -223,18 +213,12 @@
 			path = Observer;
 			sourceTree = "<group>";
 		};
-		87EEDCBB2A18E74400BD3F8F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		87EEDCC02A18E7DD00BD3F8F /* GameList */ = {
 			isa = PBXGroup;
 			children = (
 				87EEDCB72A18E41900BD3F8F /* GameListViewModel.swift */,
 				87EEDCC12A18E7F500BD3F8F /* View */,
+				87EEDCCC2A197E6600BD3F8F /* Service */,
 			);
 			path = GameList;
 			sourceTree = "<group>";
@@ -243,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				87EEDC922A18C7D300BD3F8F /* GameListViewController.swift */,
-				87EEDCBC2A18E77100BD3F8F /* GameCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,7 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				87EEDCB92A18E43300BD3F8F /* FavoritesViewModel.swift */,
-				87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */,
+				87EEDCC82A1940A900BD3F8F /* View */,
+				87EEDCCD2A197E6E00BD3F8F /* Service */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -264,6 +248,38 @@
 				87EEDCC52A19254400BD3F8F /* ImageCache.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		87EEDCC82A1940A900BD3F8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87EEDCC92A1940D900BD3F8F /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDCBC2A18E77100BD3F8F /* GameCell.swift */,
+			);
+			path = CommonView;
+			sourceTree = "<group>";
+		};
+		87EEDCCC2A197E6600BD3F8F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDCA92A18D91B00BD3F8F /* GameService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		87EEDCCD2A197E6E00BD3F8F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDCAB2A18D97900BD3F8F /* FavoritesService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

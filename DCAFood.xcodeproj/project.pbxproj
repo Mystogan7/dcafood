@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87EEDC552A18B1D400BD3F8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */; };
-		87EEDC572A18B1D400BD3F8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC562A18B1D400BD3F8F /* SceneDelegate.swift */; };
-		87EEDC592A18B1D400BD3F8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC582A18B1D400BD3F8F /* ViewController.swift */; };
-		87EEDC5C2A18B1D400BD3F8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC5A2A18B1D400BD3F8F /* Main.storyboard */; };
+		87EEDC592A18B1D400BD3F8F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC582A18B1D400BD3F8F /* MainTabBarController.swift */; };
 		87EEDC5E2A18B1D500BD3F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC5D2A18B1D500BD3F8F /* Assets.xcassets */; };
 		87EEDC612A18B1D500BD3F8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC5F2A18B1D500BD3F8F /* LaunchScreen.storyboard */; };
 		87EEDC6C2A18B1D600BD3F8F /* DCAFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC6B2A18B1D600BD3F8F /* DCAFoodTests.swift */; };
@@ -22,6 +20,11 @@
 		87EEDC8C2A18C4B000BD3F8F /* RawgGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC8B2A18C4B000BD3F8F /* RawgGames.swift */; };
 		87EEDC8E2A18C52B00BD3F8F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC8D2A18C52B00BD3F8F /* Game.swift */; };
 		87EEDC902A18C66000BD3F8F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC8F2A18C66000BD3F8F /* Genre.swift */; };
+		87EEDC932A18C7D300BD3F8F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC922A18C7D300BD3F8F /* GameListViewController.swift */; };
+		87EEDC952A18C81E00BD3F8F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */; };
+		87EEDC972A18CACB00BD3F8F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC962A18CACB00BD3F8F /* Coordinator.swift */; };
+		87EEDCA62A18D3A000BD3F8F /* games_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDCA52A18D3A000BD3F8F /* games_icon.png */; };
+		87EEDCA82A18D3E400BD3F8F /* favorites_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDCA72A18D3E400BD3F8F /* favorites_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,9 +47,7 @@
 /* Begin PBXFileReference section */
 		87EEDC512A18B1D400BD3F8F /* DCAFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCAFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87EEDC562A18B1D400BD3F8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		87EEDC582A18B1D400BD3F8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		87EEDC5B2A18B1D400BD3F8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87EEDC582A18B1D400BD3F8F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		87EEDC5D2A18B1D500BD3F8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87EEDC602A18B1D500BD3F8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87EEDC622A18B1D500BD3F8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +62,11 @@
 		87EEDC8B2A18C4B000BD3F8F /* RawgGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGames.swift; sourceTree = "<group>"; };
 		87EEDC8D2A18C52B00BD3F8F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		87EEDC8F2A18C66000BD3F8F /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		87EEDC922A18C7D300BD3F8F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
+		87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		87EEDC962A18CACB00BD3F8F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		87EEDCA52A18D3A000BD3F8F /* games_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = games_icon.png; sourceTree = "<group>"; };
+		87EEDCA72A18D3E400BD3F8F /* favorites_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +118,15 @@
 			isa = PBXGroup;
 			children = (
 				87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */,
-				87EEDC562A18B1D400BD3F8F /* SceneDelegate.swift */,
-				87EEDC582A18B1D400BD3F8F /* ViewController.swift */,
+				87EEDC582A18B1D400BD3F8F /* MainTabBarController.swift */,
+				87EEDC922A18C7D300BD3F8F /* GameListViewController.swift */,
+				87EEDC942A18C81E00BD3F8F /* FavoritesViewController.swift */,
+				87EEDC982A18CCB100BD3F8F /* Coordinator */,
 				87EEDC912A18C69F00BD3F8F /* Model */,
 				87EEDC8A2A18BE9400BD3F8F /* APIConfigurations */,
-				87EEDC5A2A18B1D400BD3F8F /* Main.storyboard */,
 				87EEDC5D2A18B1D500BD3F8F /* Assets.xcassets */,
+				87EEDCA72A18D3E400BD3F8F /* favorites_icon.png */,
+				87EEDCA52A18D3A000BD3F8F /* games_icon.png */,
 				87EEDC5F2A18B1D500BD3F8F /* LaunchScreen.storyboard */,
 				87EEDC622A18B1D500BD3F8F /* Info.plist */,
 			);
@@ -159,6 +168,14 @@
 				87EEDC8F2A18C66000BD3F8F /* Genre.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		87EEDC982A18CCB100BD3F8F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				87EEDC962A18CACB00BD3F8F /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +282,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87EEDCA62A18D3A000BD3F8F /* games_icon.png in Resources */,
 				87EEDC612A18B1D500BD3F8F /* LaunchScreen.storyboard in Resources */,
+				87EEDCA82A18D3E400BD3F8F /* favorites_icon.png in Resources */,
 				87EEDC852A18BD0000BD3F8F /* Configurations.plist in Resources */,
 				87EEDC5E2A18B1D500BD3F8F /* Assets.xcassets in Resources */,
-				87EEDC5C2A18B1D400BD3F8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,13 +311,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87EEDC592A18B1D400BD3F8F /* ViewController.swift in Sources */,
+				87EEDC592A18B1D400BD3F8F /* MainTabBarController.swift in Sources */,
 				87EEDC552A18B1D400BD3F8F /* AppDelegate.swift in Sources */,
 				87EEDC8E2A18C52B00BD3F8F /* Game.swift in Sources */,
 				87EEDC872A18BD8E00BD3F8F /* Configurations.swift in Sources */,
+				87EEDC932A18C7D300BD3F8F /* GameListViewController.swift in Sources */,
 				87EEDC892A18BE0800BD3F8F /* RawgAPI.swift in Sources */,
+				87EEDC972A18CACB00BD3F8F /* Coordinator.swift in Sources */,
 				87EEDC8C2A18C4B000BD3F8F /* RawgGames.swift in Sources */,
-				87EEDC572A18B1D400BD3F8F /* SceneDelegate.swift in Sources */,
+				87EEDC952A18C81E00BD3F8F /* FavoritesViewController.swift in Sources */,
 				87EEDC902A18C66000BD3F8F /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		87EEDC5A2A18B1D400BD3F8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87EEDC5B2A18B1D400BD3F8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		87EEDC5F2A18B1D500BD3F8F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -406,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -461,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
@@ -484,7 +496,7 @@
 				INFOPLIST_FILE = DCAFood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -513,7 +525,7 @@
 				INFOPLIST_FILE = DCAFood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

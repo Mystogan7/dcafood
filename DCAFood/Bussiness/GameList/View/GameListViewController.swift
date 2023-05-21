@@ -158,6 +158,7 @@ extension GameListViewController: UITableViewDataSource {
         
         let game = viewModel.filteredGames.value[indexPath.row]
         cell.configure(with: game)
+        cell.selectionStyle = .none
         return cell
     }
 }

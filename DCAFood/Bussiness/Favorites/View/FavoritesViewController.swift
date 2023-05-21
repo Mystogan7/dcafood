@@ -12,9 +12,9 @@ class FavoritesViewController: UIViewController {
     private let tableView = UITableView()
     private let viewModel: FavoritesViewModelProtocol = FavoritesViewModel()
     
-    private let titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Favourites"
+        label.text = "Favorites"
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
     
     private let favouritesInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "There is no favourites found."
+        label.text = "There is no favorites found."
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -37,6 +37,11 @@ class FavoritesViewController: UIViewController {
         bindData()
         
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
+        // Check if viewModel.gameList already has values
+        if !viewModel.gameList.value.isEmpty {
+            updateView()
+        }
     }
     
     private func setupTableView() {
@@ -94,13 +99,21 @@ class FavoritesViewController: UIViewController {
     
     private func bindData() {
         let reloadDataObserver = ClosureObserver<[Game]> { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-                self?.updateInfoLabelVisibility()
-            }
+            self?.updateView()
         }
-        
+
         viewModel.gameList.addObserver(reloadDataObserver)
+    }
+
+    private func updateView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.updateInfoLabelVisibility()
+
+            let count = self.viewModel.gameList.value.count
+            let text = count > 0 ? "Favorites (\(count))" : "Favorites"
+            self.titleLabel.text = text
+        }
     }
 }
 
@@ -118,6 +131,7 @@ extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as! GameTableViewCell
         let game = viewModel.gameList.value[indexPath.row]
+        cell.selectionStyle = .none
         cell.configure(with: game)
         return cell
     }

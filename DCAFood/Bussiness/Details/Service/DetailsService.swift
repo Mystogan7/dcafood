@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+protocol DetailsServiceProtocol {
+    func fetchGameDetails(id: Int, completion: @escaping (Result<GameDetails, Error>) -> Void)
+}
+
+class DetailsService: DetailsServiceProtocol {
+    private let networkService: NetworkServiceProtocol
+
+    init(networkService: NetworkServiceProtocol = NetworkService()) {
+        self.networkService = networkService
+    }
+
+    func fetchGameDetails(id: Int, completion: @escaping (Result<GameDetails, Error>) -> Void) {
+        guard let url = RawgAPI.Endpoint.gameDetails(gameId: id).url() else {
+            completion(.failure(ServiceError.invalidURL))
+            return
+        }
+        networkService.request(url, completion: completion)
+    }
+}

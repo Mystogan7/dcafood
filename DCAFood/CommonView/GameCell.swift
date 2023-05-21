@@ -8,7 +8,6 @@
 import UIKit
 
 class GameTableViewCell: UITableViewCell {
-    static let imageCache = ImageCache()
     private var currentImageLoadingTask: URLSessionDataTask?
     
     let gameImageView = UIImageView.createImageView()
@@ -103,7 +102,7 @@ class GameTableViewCell: UITableViewCell {
         imageView.image = nil
         imageView.imageURL = url
         
-        if let cachedImage = GameTableViewCell.imageCache.getImage(for: url) {
+        if let cachedImage = ImageCache.shared.getImage(for: url) {
             imageView.image = cachedImage
             return
         }
@@ -118,7 +117,7 @@ class GameTableViewCell: UITableViewCell {
             DispatchQueue.main.async {
                 if let currentURL = imageView?.imageURL, currentURL == url {
                     imageView?.image = image
-                    GameTableViewCell.imageCache.cacheImage(image, for: url)
+                    ImageCache.shared.cacheImage(image, for: url)
                 }
             }
         }

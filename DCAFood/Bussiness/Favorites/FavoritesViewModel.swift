@@ -17,7 +17,7 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
     private(set) var gameList: Observable<[Game]> = Observable([])
     
     
-    init(favoriteService: FavoritesServiceProtocol = FavoritesService()) {
+    init(favoriteService: FavoritesServiceProtocol = FavoritesService.shared) {
         self.favoriteService = favoriteService
         
         bindFavoritesService()

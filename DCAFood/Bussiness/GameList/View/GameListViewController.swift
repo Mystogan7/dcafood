@@ -8,7 +8,7 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-    weak var coordinator: GameListCoordinator?
+    var coordinator: GameListCoordinator?
     private var viewModel: GameListViewModelProtocol = GameListViewModel()
     private let tableView = UITableView()
     private var debounceTimer: Timer?
@@ -138,6 +138,11 @@ extension GameListViewController: UITableViewDelegate {
                 self?.viewModel.fetchGames(query: self?.viewModel.currentQuery ?? "", page: self?.viewModel.currentPage ?? 1)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let game = viewModel.filteredGames.value[indexPath.row]
+        coordinator?.showGameDetails(game: game)
     }
 }
 

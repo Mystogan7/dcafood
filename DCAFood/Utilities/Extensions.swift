@@ -50,3 +50,16 @@ extension UIImageView {
         }
     }
 }
+
+extension UILabel {
+    func isTruncated() -> Bool {
+        guard let labelText = text else {
+            return false
+        }
+        
+        let labelTextSize = CGSize(width: frame.size.width, height: .greatestFiniteMagnitude)
+        let estimatedLabelSize = labelText.boundingRect(with: labelTextSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font!], context: nil)
+        
+        return estimatedLabelSize.height > bounds.size.height
+    }
+}

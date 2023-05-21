@@ -54,10 +54,11 @@ class GameListCoordinator: Coordinator {
     
     func start() {}
     
-    func showGameDetails() {
-//        let gameDetailsViewController = GameDetailsViewController()
-//        gameDetailsViewController.coordinator = self
-//        gameListViewController.navigationController?.pushViewController(gameDetailsViewController, animated: true)
+    func showGameDetails(game: Game) {
+        let detailsViewController = DetailsViewController()
+        detailsViewController.coordinator = self
+        detailsViewController.game = game
+        gameListViewController.present(detailsViewController, animated: true)
     }
 }
 

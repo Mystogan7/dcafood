@@ -8,6 +8,8 @@
 import UIKit
 
 class ImageCache {
+    static let shared = ImageCache()
+
     private let cache: URLCache
     
     init() {

@@ -10,6 +10,7 @@ import Foundation
 protocol GameListViewModelProtocol {
     var gameList: Observable<[Game]> { get }
     var filteredGames: Observable<[Game]> { get }
+    var selectedGameIds: Set<Int> { get set }
     func fetchGames(query: String, page: Int)
     func searchGames(query: String)
     var currentQuery: String {get set}
@@ -23,6 +24,7 @@ class GameListViewModel: GameListViewModelProtocol {
      
     var currentQuery: String = ""
     var currentPage: Int = 1
+    var selectedGameIds: Set<Int> = []
 
     init(gameService: GameServiceProtocol = GameService()) {
         self.gameService = gameService

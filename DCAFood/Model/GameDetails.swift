@@ -13,7 +13,7 @@ struct GameDetails: Codable {
     let website: String?
     let redditURL: String?
     let backgroundImage: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, slug, name
         case nameOriginal = "name_original"
@@ -21,5 +21,18 @@ struct GameDetails: Codable {
         case backgroundImage = "background_image"
         case website
         case redditURL = "reddit_url"
+    }
+}
+
+extension GameDetails: Equatable {
+    static func == (lhs: GameDetails, rhs: GameDetails) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.slug == rhs.slug &&
+        lhs.name == rhs.name &&
+        lhs.nameOriginal == rhs.nameOriginal &&
+        lhs.description == rhs.description &&
+        lhs.website == rhs.website &&
+        lhs.redditURL == rhs.redditURL &&
+        lhs.backgroundImage == rhs.backgroundImage
     }
 }

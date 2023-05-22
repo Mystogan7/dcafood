@@ -143,6 +143,21 @@ extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let game = viewModel.filteredGames.value[indexPath.row]
         coordinator?.showGameDetails(game: game)
+        
+        guard let id = game.id else {
+            return
+        }
+        
+        if viewModel.selectedGameIds.contains(id) {
+            viewModel.selectedGameIds.remove(id)
+        } else {
+            viewModel.selectedGameIds.insert(id)
+        }
+        
+        let lightGrayColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        
+        let cell = tableView.cellForRow(at: indexPath) as? GameTableViewCell
+        cell?.backgroundColor = viewModel.selectedGameIds.contains(id) ? lightGrayColor : UIColor.white
     }
 }
 
@@ -159,8 +174,16 @@ extension GameListViewController: UITableViewDataSource {
         let game = viewModel.filteredGames.value[indexPath.row]
         cell.configure(with: game)
         cell.selectionStyle = .none
+        
+        guard let id = game.id else {
+            return cell
+        }
+        
+        cell.backgroundColor = viewModel.selectedGameIds.contains(id) ? UIColor.lightGray : UIColor.white
+        
         return cell
     }
+    
 }
 
 extension GameListViewController: UISearchBarDelegate {

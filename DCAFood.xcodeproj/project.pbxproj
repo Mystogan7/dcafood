@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		873F35292A1A96C90045CB88 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F35282A1A96C90045CB88 /* DescriptionCell.swift */; };
 		873F352B2A1AA1D90045CB88 /* ExternalUrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F352A2A1AA1D90045CB88 /* ExternalUrlCell.swift */; };
+		87EA39642A1B56D50036D353 /* GameListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA39632A1B56D50036D353 /* GameListViewModelTests.swift */; };
+		87EA39662A1B58150036D353 /* FavoritesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA39652A1B58150036D353 /* FavoritesViewModelTests.swift */; };
+		87EA39682A1B58DF0036D353 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA39672A1B58DF0036D353 /* DetailsViewModelTests.swift */; };
 		87EEDC552A18B1D400BD3F8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */; };
 		87EEDC592A18B1D400BD3F8F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC582A18B1D400BD3F8F /* MainTabBarViewController.swift */; };
 		87EEDC5E2A18B1D500BD3F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC5D2A18B1D500BD3F8F /* Assets.xcassets */; };
 		87EEDC612A18B1D500BD3F8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC5F2A18B1D500BD3F8F /* LaunchScreen.storyboard */; };
-		87EEDC6C2A18B1D600BD3F8F /* DCAFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC6B2A18B1D600BD3F8F /* DCAFoodTests.swift */; };
 		87EEDC762A18B1D600BD3F8F /* DCAFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC752A18B1D600BD3F8F /* DCAFoodUITests.swift */; };
 		87EEDC782A18B1D600BD3F8F /* DCAFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEDC772A18B1D600BD3F8F /* DCAFoodUITestsLaunchTests.swift */; };
 		87EEDC852A18BD0000BD3F8F /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87EEDC842A18BD0000BD3F8F /* Configurations.plist */; };
@@ -60,6 +62,9 @@
 /* Begin PBXFileReference section */
 		873F35282A1A96C90045CB88 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		873F352A2A1AA1D90045CB88 /* ExternalUrlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUrlCell.swift; sourceTree = "<group>"; };
+		87EA39632A1B56D50036D353 /* GameListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModelTests.swift; sourceTree = "<group>"; };
+		87EA39652A1B58150036D353 /* FavoritesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelTests.swift; sourceTree = "<group>"; };
+		87EA39672A1B58DF0036D353 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
 		87EEDC512A18B1D400BD3F8F /* DCAFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCAFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EEDC542A18B1D400BD3F8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87EEDC582A18B1D400BD3F8F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +72,6 @@
 		87EEDC602A18B1D500BD3F8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87EEDC622A18B1D500BD3F8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87EEDC672A18B1D600BD3F8F /* DCAFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DCAFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87EEDC6B2A18B1D600BD3F8F /* DCAFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCAFoodTests.swift; sourceTree = "<group>"; };
 		87EEDC712A18B1D600BD3F8F /* DCAFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DCAFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EEDC752A18B1D600BD3F8F /* DCAFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCAFoodUITests.swift; sourceTree = "<group>"; };
 		87EEDC772A18B1D600BD3F8F /* DCAFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCAFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -162,7 +166,9 @@
 		87EEDC6A2A18B1D600BD3F8F /* DCAFoodTests */ = {
 			isa = PBXGroup;
 			children = (
-				87EEDC6B2A18B1D600BD3F8F /* DCAFoodTests.swift */,
+				87EA39632A1B56D50036D353 /* GameListViewModelTests.swift */,
+				87EA39652A1B58150036D353 /* FavoritesViewModelTests.swift */,
+				87EA39672A1B58DF0036D353 /* DetailsViewModelTests.swift */,
 			);
 			path = DCAFoodTests;
 			sourceTree = "<group>";
@@ -492,7 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87EEDC6C2A18B1D600BD3F8F /* DCAFoodTests.swift in Sources */,
+				87EA39682A1B58DF0036D353 /* DetailsViewModelTests.swift in Sources */,
+				87EA39662A1B58150036D353 /* FavoritesViewModelTests.swift in Sources */,
+				87EA39642A1B56D50036D353 /* GameListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

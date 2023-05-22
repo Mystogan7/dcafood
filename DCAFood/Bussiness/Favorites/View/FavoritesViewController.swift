@@ -115,6 +115,26 @@ class FavoritesViewController: UIViewController {
             self.titleLabel.text = text
         }
     }
+    
+    private func presentDeleteConfirmation(for game: Game, at indexPath: IndexPath) {
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete this favorite?", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            self?.viewModel.removeFromFavorites(game: game)
+        }
+        alertController.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension FavoritesViewController: UITableViewDelegate {
@@ -129,7 +149,7 @@ extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let game = viewModel.gameList.value[indexPath.row]
-            viewModel.removeFromFavorites(game: game)
+            presentDeleteConfirmation(for: game, at: indexPath)
         }
     }
 }
